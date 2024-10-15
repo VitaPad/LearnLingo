@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  gap: 20px; /* Відстань між посиланнями */
+}
+
+.nav a {
+  text-decoration: none; /* Без підкреслення */
+  color: black; /* Колір тексту */
+  font-weight: 500; /* Товщина шрифту */
+  transition: color 0.3s; /* Анімація зміни кольору */
+}
+
+.nav a:hover {
+  color: rgba(159, 186, 174, 1); /* Зміна кольору при наведенні */
+}
+
+.active {
+  font-weight: bold;
+  font-weight: bold; /* Товстий шрифт для активного посилання */
+  color: rgba(159, 186, 174, 1); /* Колір активного посилання */
+}
