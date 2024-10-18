@@ -1,20 +1,14 @@
-import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
+import UserActions from '../UserActions/UserActions';
 import css from './Header.module.css';
-import sprite from '../../image/sprite/sprite.svg';
 
-function Header() {
+function Header({ theme, toggleTheme }) {
   return (
     <header className={css.header}>
       <Logo />
-      <Navigation />
-      <Link className={css.link_signin} to="login">
-        <svg width="28" height="28">
-          <use href={`${sprite}#icon-log-in-01`}></use>
-        </svg>
-        Log in
-      </Link>
+      <Navigation theme={theme} />
+      <UserActions theme={theme} toggleTheme={toggleTheme} />
     </header>
   );
 }

@@ -1,0 +1,42 @@
+.login {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: left;
+  color: rgba(18, 20, 23, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.registration {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: left;
+  padding: 14px 39px 14px 39px;
+  gap: 8px;
+  border-radius: 12px;
+  opacity: 0px;
+  background-color: rgba(18, 20, 23, 1);
+  color: rgba(255, 255, 255, 1);
+}
+.userActions .themeButton {
+  min-height: 48px;
+  min-width: 48px;
+  border: none; /* Видаляємо бордер */
+  border-radius: 50px; /* Робимо кнопку круглою */
+  cursor: pointer; /* Вказівник при наведенні */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Видаляємо внутрішні відступи */
+  outline: none; /* Видаляємо обведення при фокусі */
+}
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

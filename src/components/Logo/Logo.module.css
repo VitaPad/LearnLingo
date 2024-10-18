@@ -7,3 +7,8 @@
   text-align: left;
   color: rgba(18, 20, 23, 1);
 }
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
