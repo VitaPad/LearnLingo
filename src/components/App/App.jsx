@@ -9,51 +9,71 @@ const themes = [
   createTheme({
     palette: {
       primary: {
-        main: 'rgba(251, 233, 186, 1)', // Жовта кнопка
+        main: 'rgba(244, 197, 80, 1)', // Жовта кнопка
+        light: 'rgba(251, 233, 186, 1)',
       },
       text: {
         primary: '#000',
       },
     },
-  }),
-  createTheme({
-    palette: {
-      primary: {
-        main: 'rgba(203, 222, 211, 1)', // Зелена кнопка
-      },
-      text: {
-        primary: '#000',
-      },
+    images: {
+      backgroundImage: '/block-1.png', // Зображення для жовтої теми
     },
   }),
   createTheme({
     palette: {
       primary: {
-        main: 'rgba(191, 214, 234, 1)', // Синя кнопка
+        main: 'rgba(159, 186, 174, 1)', // Зелена кнопка
+        light: 'rgba(203, 222, 211, 1)',
       },
       text: {
         primary: '#000',
       },
     },
-  }),
-  createTheme({
-    palette: {
-      primary: {
-        main: 'rgba(242, 192, 189, 1)', // Червона кнопка
-      },
-      text: {
-        primary: '#000',
-      },
+    images: {
+      backgroundImage: '(/block-2.png)', // Зображення для жовтої теми
     },
   }),
   createTheme({
     palette: {
       primary: {
-        main: 'rgba(244, 200, 186, 1)', // Оранжева кнопка
+        main: 'rgba(159, 183, 206, 1)', // Синя кнопка
+        light: 'rgba(191, 214, 234, 1)',
       },
       text: {
         primary: '#000',
       },
+    },
+    images: {
+      backgroundImage: '(/block-3.png)', // Зображення для жовтої теми
+    },
+  }),
+  createTheme({
+    palette: {
+      primary: {
+        main: 'rgba(224, 163, 154, 1)', // Червона кнопка
+        light: 'rgba(242, 192, 189, 1)',
+      },
+      text: {
+        primary: '#000',
+      },
+    },
+    images: {
+      backgroundImage: '(/block-4.png)', // Зображення для жовтої теми
+    },
+  }),
+  createTheme({
+    palette: {
+      primary: {
+        main: 'rgba(240, 170, 141, 1)', // Оранжева кнопка
+        light: 'rgba(244, 200, 186, 1)',
+      },
+      text: {
+        primary: '#000',
+      },
+    },
+    images: {
+      backgroundImage: '(/block-5.png)', // Зображення для жовтої теми
     },
   }),
 ];

@@ -1,0 +1,6 @@
+.container {
+  width: 568px;
+  height: 530px; /* Фіксована висота для відображення фону */
+  background-size: cover;
+  background-position: center;
+}
