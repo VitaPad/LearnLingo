@@ -5,7 +5,7 @@ function HeroImage({ theme }) {
     <div
       className={css.container}
       style={{
-        backgroundImage: `url(${theme.images.backgroundImage})`, // Використовується шлях з теми
+        backgroundImage: `url(${theme.images.backgroundImage})`,
       }}
     ></div>
   );

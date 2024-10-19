@@ -1,0 +1,39 @@
+.box {
+  border-radius: 30px;
+  /*   padding: 16px; */
+  margin: 24px 0 32px 0;
+  display: flex;
+  justify-content: center;
+  max-width: 1312px; /* Максимальна ширина DECSTOP 1200px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box .number {
+  font-family: Roboto;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+.box .text {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: rgba(18, 20, 23, 0.7);
+  margin-left: 16px;
+  max-width: 86px; /* DECSTOPE */
+  text-align: left;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stats {
+  padding: 40px 123px 40px 123px;
+}

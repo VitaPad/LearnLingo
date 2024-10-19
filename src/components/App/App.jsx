@@ -31,7 +31,7 @@ const themes = [
       },
     },
     images: {
-      backgroundImage: '(/block-2.png)', // Зображення для жовтої теми
+      backgroundImage: '/block-2.png', // Зображення для жовтої теми
     },
   }),
   createTheme({
@@ -45,7 +45,7 @@ const themes = [
       },
     },
     images: {
-      backgroundImage: '(/block-3.png)', // Зображення для жовтої теми
+      backgroundImage: '/block-3.png', // Зображення для жовтої теми
     },
   }),
   createTheme({
@@ -59,7 +59,7 @@ const themes = [
       },
     },
     images: {
-      backgroundImage: '(/block-4.png)', // Зображення для жовтої теми
+      backgroundImage: '/block-4.png', // Зображення для жовтої теми
     },
   }),
   createTheme({
@@ -73,7 +73,7 @@ const themes = [
       },
     },
     images: {
-      backgroundImage: '(/block-5.png)', // Зображення для жовтої теми
+      backgroundImage: '/block-5.png', // Зображення для жовтої теми
     },
   }),
 ];
