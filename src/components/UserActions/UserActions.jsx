@@ -1,19 +1,19 @@
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import sprite from '../../image/sprite/sprite.svg';
+import { Link } from 'react-router-dom'; /* 
+import sprite from '../../image/sprite/sprite.svg'; */
 import css from './UserAction.module.css';
 
-function UserActions({ theme, toggleTheme }) {
+function UserActions({ toggleTheme }) {
   return (
     <div className={css.userActions}>
       <Link className={css.login} to="login">
-        <svg
+        {/*        <svg
           width="28"
           height="28"
           style={{ color: theme.palette.primary.main }}
         >
           <use href={`${sprite}#icon-log-in-01`}></use>
-        </svg>
+        </svg> */}
         Log in
       </Link>
       <Link className={css.registration} to="login">
