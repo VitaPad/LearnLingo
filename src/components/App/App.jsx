@@ -10,7 +10,7 @@ const themes = [
     palette: {
       primary: {
         main: 'rgba(244, 197, 80, 1)', // Жовта кнопка
-        light: 'rgba(251, 233, 186, 1)',
+        light: ' rgba(255, 220, 134, 1)',
       },
       text: {
         primary: '#000',
@@ -88,6 +88,7 @@ function App() {
   return (
     <ThemeProvider theme={themes[currentThemeIndex]}>
       <CssBaseline />
+
       <Routes>
         <Route
           path="/"
@@ -95,7 +96,7 @@ function App() {
             <Home theme={themes[currentThemeIndex]} toggleTheme={toggleTheme} />
           }
         />
-        {/*      <Route path="/learnlingo/about" element={<About />} /> */}
+        {/*    <Route path="/login" element={<LoginModal />} /> */}
       </Routes>
     </ThemeProvider>
   );

@@ -24,7 +24,8 @@ function Promo({ theme }) {
       <button
         className={css.button}
         style={{
-          backgroundColor: theme.palette.primary.main,
+          '--primary-main': theme.palette.primary.main,
+          '--primary-light': theme.palette.primary.light,
         }}
       >
         Get started
