@@ -1,0 +1,8 @@
+.modal {
+  max-width: 566px;
+  border-radius: 30px;
+  padding: 64px;
+}
+.text {
+  margin-top: 20px;
+}

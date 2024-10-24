@@ -1,9 +1,8 @@
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom'; /* 
-import sprite from '../../image/sprite/sprite.svg'; */
+/* import sprite from '../../image/sprite/sprite.svg'; */
 import css from './UserAction.module.css';
 
-function UserActions({ theme, toggleTheme, handleOpen }) {
+function UserActions({ theme, toggleTheme, handleOpen, handleOpenRegister }) {
   return (
     <div className={css.userActions}>
       <button className={css.login} onClick={handleOpen}>
@@ -20,9 +19,9 @@ function UserActions({ theme, toggleTheme, handleOpen }) {
         </svg>
         Log in
       </button>
-      <Link className={css.registration} to="login">
+      <button className={css.registration} onClick={handleOpenRegister}>
         Registration
-      </Link>
+      </button>
       <Button
         className={css.themeButton}
         variant="contained"

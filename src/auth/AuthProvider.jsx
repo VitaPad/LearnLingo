@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { app } from '../firebaseConfig';
+import { Link } from 'react-router-dom';
+import css from './AuthProvider.module.css';
 
 export const AuthProvider = () => {
   const auth = getAuth(app);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const googleProvider = new GoogleAuthProvider(); // Створюємо інстанс провайдера Google
   const [user, setUser] = useState(auth.currentUser);
 
@@ -20,20 +23,17 @@ export const AuthProvider = () => {
       if (maybeUser != null) {
         return setUser(maybeUser);
       }
-      signInWithPopup(auth, googleProvider)
-        .then(credentials => {
-          setUser(credentials.user);
-        })
-        .catch(e => console.error('Error during sign-in:', e)); // Виправлений catch
     });
     return unsub;
   }, [auth, googleProvider]);
   return (
-    <div>
+    <div className={css.box}>
       {user ? (
         <h1>Welcome, {user.displayName}</h1>
       ) : (
-        <button onClick={handleSignIn}>Sign in with Google</button>
+        <Link className={css.link} onClick={handleSignIn}>
+          Sign in with Google
+        </Link>
       )}
     </div>
   );

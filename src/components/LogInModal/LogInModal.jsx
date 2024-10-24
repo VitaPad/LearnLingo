@@ -40,11 +40,30 @@ function LogInModal({ open, handleClose }) {
           id="modal-title"
           variant="h6"
           component="h2"
-          className={css.h2}
+          sx={{
+            fontFamily: 'Roboto',
+            fontSize: '40px',
+            fontWeight: 500,
+            lineHeight: '48px',
+            letterSpacing: '-0.02em',
+            textAlign: 'left',
+          }}
         >
           Log In
         </Typography>
-        <Typography id="modal-description" sx={{ mt: 2 }} className={css.text}>
+        <Typography
+          id="modal-description"
+          sx={{
+            fontFamily: 'Roboto',
+            fontSize: '16px',
+            fontWeight: 400,
+            lineHeight: '22px',
+            letterSpacing: '-0.02em',
+            textAlign: 'left',
+            paddingTop: '20px',
+            color: 'rgba(18, 20, 23, 0.8)',
+          }}
+        >
           Welcome back! Please enter your credentials to access your account and
           continue your search for an teacher.
         </Typography>
@@ -88,6 +107,12 @@ function LogInModal({ open, handleClose }) {
               backgroundColor: theme.palette.primary.main,
             },
             textTransform: 'none',
+            fontFamily: 'Roboto',
+            fontSize: '18px',
+            fontWeight: 700,
+            lineHeight: '28px',
+            letterSpacing: '-0.02em',
+            textAlign: 'left',
           })}
         >
           Log In
