@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import LogInModal from '../LoginModal/LoginModal';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import UserActions from '../UserActions/UserActions';
 import css from './Header.module.css';
 import RegisterModal from '../RegiserModal/RegisterModal';
+import LogInModal from '../LogInModal/LogInModal';
 
 function Header({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false);
