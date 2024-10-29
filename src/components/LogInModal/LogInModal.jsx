@@ -8,7 +8,8 @@ import {
   Typography,
 } from '@mui/material';
 import css from './LogInModal.module.css';
-import { AuthProvider } from '../../auth/AuthProvider';
+import { loginUser } from '../../services/authService';
+import { useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -20,6 +21,22 @@ const style = {
 };
 
 function LogInModal({ open, handleClose }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      setError(''); // Очищаємо попередню помилку
+      const user = await loginUser(email, password);
+      console.log('User logged in:', user);
+      handleClose(); // Закриваємо модалку після успішного входу
+    } catch (error) {
+      // Відображаємо повідомлення про помилку для користувача
+      setError(error.message);
+    }
+  };
+
   return (
     <Modal
       open={open}
@@ -71,6 +88,8 @@ function LogInModal({ open, handleClose }) {
         <TextField
           fullWidth
           label="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           sx={{
             mt: 5,
             '& fieldset': {
@@ -82,6 +101,8 @@ function LogInModal({ open, handleClose }) {
           fullWidth
           label="Password"
           type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
           sx={{
             mt: 2.25,
             '& fieldset': {
@@ -89,7 +110,13 @@ function LogInModal({ open, handleClose }) {
             },
           }}
         />
+        {error && (
+          <Typography color="error" sx={{ mt: 2 }}>
+            {error}
+          </Typography>
+        )}
         <Button
+          onClick={handleLogin}
           variant="contained"
           color="primary"
           fullWidth
@@ -117,7 +144,6 @@ function LogInModal({ open, handleClose }) {
         >
           Log In
         </Button>
-        <AuthProvider />
       </Box>
     </Modal>
   );

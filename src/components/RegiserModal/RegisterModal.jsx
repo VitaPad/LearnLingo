@@ -1,5 +1,3 @@
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../../firebaseConfig';
 import {
   Box,
   Button,
@@ -11,6 +9,8 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import css from './RegisterModal.module.css';
 import { useState } from 'react';
+import { registerUser } from '../../services/authService';
+import { AuthProvider } from '../../auth/AuthProvider';
 
 const style = {
   position: 'absolute',
@@ -25,7 +25,8 @@ export default function RegisterModal({ open, handleClose, setUserName }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [error, setError] = useState('');
+  /* 
   const handleRegister = async e => {
     e.preventDefault();
     try {
@@ -42,6 +43,21 @@ export default function RegisterModal({ open, handleClose, setUserName }) {
       handleClose();
       console.log('User registered:', userCredential.user);
     } catch (error) {
+      console.error('Error during registration:', error);
+    }
+ */
+  const handleRegister = async e => {
+    e.preventDefault();
+    try {
+      const user = await registerUser(email, password, name);
+      setUserName(user.displayName);
+      handleClose();
+      console.log('User registered:', user);
+    } catch (error) {
+      // Перевірка на тип помилки
+      if (error.code === 'auth/email-already-in-use') {
+        setError('This email is already in use. Please try another email.');
+      }
       console.error('Error during registration:', error);
     }
   };
@@ -130,6 +146,11 @@ export default function RegisterModal({ open, handleClose, setUserName }) {
             }}
             onChange={e => setEmail(e.target.value)}
           />
+          {error && (
+            <Typography color="error" sx={{ marginTop: '10px' }}>
+              {error}
+            </Typography>
+          )}
           <TextField
             variant="outlined"
             margin="normal"
@@ -180,6 +201,7 @@ export default function RegisterModal({ open, handleClose, setUserName }) {
             Sign Up
           </Button>
         </Box>
+        <AuthProvider onSuccess={handleClose} />
       </Box>
     </Modal>
   );

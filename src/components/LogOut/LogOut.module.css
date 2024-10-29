@@ -1,0 +1,22 @@
+.svg {
+  color: var(--primary-light);
+  margin-right: 8px;
+}
+
+.svg:hover,
+.svg:focus {
+  color: var(--primary-main);
+}
+.button {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+  margin-top: 40px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+}

@@ -17,7 +17,6 @@ const firebaseConfig = {
   messagingSenderId: MESSAGING_SENDER_ID,
   appId: APP_ID,
 };
-console.log('API_KEY:', API_KEY);
 export const app = initializeApp(firebaseConfig);
 export const googleAuthProvider = new GoogleAuthProvider();
 export const auth = getAuth(app);
