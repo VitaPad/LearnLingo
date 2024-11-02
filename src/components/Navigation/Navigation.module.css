@@ -4,17 +4,16 @@
   gap: 28px;
 }
 
-.nav a {
+.link {
+  color: #121417;
   text-decoration: none;
-  font-weight: 400;
   transition: color 0.3s;
-  color: rgba(18, 20, 23, 1);
 }
 
-.nav a:hover {
-  color: var(--hover-color);
+.link:hover {
+  color: var(--primary-main);
 }
 
 .active {
-  color: var(--hover-color);
+  color: var(--primary-main);
 }

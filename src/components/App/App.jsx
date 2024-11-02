@@ -5,6 +5,7 @@ import 'normalize.css';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState } from 'react';
+import Teachers from '../../pages/Teachers/Teachers';
 const themes = [
   createTheme({
     palette: {
@@ -96,7 +97,15 @@ function App() {
             <Home theme={themes[currentThemeIndex]} toggleTheme={toggleTheme} />
           }
         />
-        {/*    <Route path="/login" element={<LoginModal />} /> */}
+        <Route
+          path="/teachers"
+          element={
+            <Teachers
+              theme={themes[currentThemeIndex]}
+              toggleTheme={toggleTheme}
+            />
+          }
+        />
       </Routes>
     </ThemeProvider>
   );

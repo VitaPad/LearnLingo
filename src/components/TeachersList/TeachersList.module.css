@@ -1,0 +1,29 @@
+.button {
+  text-decoration: underline;
+  border: none;
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.label {
+  color: #8a8a89;
+}
+.img {
+  display: block;
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+}
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border: 3px solid #f4c550;
+  border-radius: 50%;
+}
