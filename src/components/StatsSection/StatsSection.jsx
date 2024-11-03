@@ -12,7 +12,7 @@ function StatsSection({ theme }) {
     <Box
       className={css.box}
       sx={{
-        border: `2px dashed ${theme.palette.primary.main}`, // Колір кордону через тему
+        border: `2px dashed ${theme.palette.primary.main}`, 
       }}
     >
       <Grid container spacing={4} justifyContent="center" className={css.stats}>

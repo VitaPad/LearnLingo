@@ -3,7 +3,7 @@ import { getTeachers } from '../../services/teachersService';
 import css from './TeachersList.module.css';
 import LevelsList from '../LevelsList/LevelsList';
 
-function TeachersList() {
+function TeachersList({ theme }) {
   const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,10 @@ function TeachersList() {
     <div className={css.containerList}>
       {teachers.map((teacher, index) => (
         <div key={index} className={css.container}>
-          <div className={css.avatar}>
+          <div
+            className={css.avatar}
+            style={{ border: `3px solid ${theme.palette.primary.main}` }}
+          >
             <img
               src={teacher.avatar_url}
               alt={`${teacher.name} ${teacher.surname}`}

@@ -2,11 +2,11 @@
 import TeachersList from '../../components/TeachersList/TeachersList';
 /* import css from './Teachers.module.css'; */
 
-function Teachers() {
+function Teachers({ theme }) {
   return (
     <>
       {/*       <Header theme={theme} toggleTheme={toggleTheme} /> */}
-      <TeachersList />
+      <TeachersList theme={theme} />
     </>
   );
 }
