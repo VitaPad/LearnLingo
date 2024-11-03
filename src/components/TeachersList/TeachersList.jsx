@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getTeachers } from '../../services/teachersService';
 import css from './TeachersList.module.css';
 import LevelsList from '../LevelsList/LevelsList';
+import TeacherCardHeader from '../TeacherCardHeader/TeacherCardHeader';
 
 function TeachersList({ theme }) {
   const [teachers, setTeachers] = useState([]);
@@ -29,7 +30,7 @@ function TeachersList({ theme }) {
           </div>
           <div className={css.infoBox}>
             <span className={css.label}>Languages</span>
-            <h3>
+            <h3 className={css.h3}>
               {teacher.name} {teacher.surname}
             </h3>
             <p className={css.text}>
@@ -51,6 +52,11 @@ function TeachersList({ theme }) {
             </p>
             <button className={css.button}>Read more</button>
             <LevelsList levels={teacher.levels} />
+            <TeacherCardHeader
+              lessonsDone={teacher.lessons_done}
+              pricePerHour={teacher.price_per_hour}
+              rating={teacher.rating}
+            />
           </div>
         </div>
       ))}
