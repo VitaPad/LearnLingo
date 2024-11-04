@@ -24,6 +24,11 @@
 /* .textItems:last-child {
   border: none;
 } */
+.iconBook {
+  margin-right: 8px;
+  fill: none;
+  stroke: #121417;
+}
 
 .itemPrice {
   font-family: Roboto;
