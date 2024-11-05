@@ -8,11 +8,9 @@
 }
 .containerList {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   background-color: #f8f8f8;
-  padding-top: 202px;
+  padding-top: 32px;
 }
 .container {
   position: relative;

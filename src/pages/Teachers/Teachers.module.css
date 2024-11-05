@@ -1,6 +1,15 @@
 .container {
   background-color: #f8f8f8;
-  padding-bottom: 96px;
+  /*  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  flex-direction: column; */
+}
+.searchFormWrapper,
+.teachersListWrapper {
+  max-width: 1184px;
+  margin: 0 auto;
 }
 .btn {
   display: flex;
