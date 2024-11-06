@@ -1,70 +1,23 @@
-import { useState } from 'react';
+import CustomSelect from '../CustomSelect/CustomSelect';
 import css from './SearchForm.module.css';
+
 function SearchForm() {
-  /*   const [language, setLanguage] = useState('');
-  const [knowledgeLevel, setKnowledgeLevel] = useState('');
-  const [price, setPrice] = useState(''); */
-
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [isKnowledgeOpen, setIsKnowledgeOpen] = useState(false);
-  const [isPriceOpen, setIsPriceOpen] = useState(false);
-
-  const toggleLanguageOpen = () => setIsLanguageOpen(!isLanguageOpen);
-  const toggleKnowledgeOpen = () => setIsKnowledgeOpen(!isKnowledgeOpen);
-  const togglePriceOpen = () => setIsPriceOpen(!isPriceOpen);
+  const languages = ['French', 'English', 'German', 'Ukrainian', 'Polish'];
+  const levels = [
+    'A1 Beginner',
+    'A2 Elementary',
+    'B1 Intermediate',
+    'B2 Upper-Intermediate',
+  ];
+  const prices = ['$10', '$20', '$30', '$40', '$50'];
 
   return (
-    <div className={css.searchForm}>
-      <div
-        className={`${css.formGroup} ${isLanguageOpen ? css.open : ''}`}
-        onClick={toggleLanguageOpen}
-        onBlur={() => setIsLanguageOpen(false)}
-      >
-        <label>Languages</label>
-        <select id="language" className={css.language}>
-          <option value="english">English</option>
-          <option value="spanish">German</option>
-          <option value="spanish">Ukrainian</option>
-          <option value="spanish">Polish</option>
-        </select>
-        <svg className={css.icon} width="20" height="20">
-          <use href="public/sprite/sprite.svg#icon-chevron-down"></use>
-        </svg>
-      </div>
-
-      <div
-        className={`${css.formGroup} ${isKnowledgeOpen ? css.open : ''}`}
-        onClick={toggleKnowledgeOpen}
-        onBlur={() => setIsKnowledgeOpen(false)}
-      >
-        <label>Level of knowledge</label>
-        <select id="knowledge-level" className={css.knowledge}>
-          <option value="a1">A1 Beginner</option>
-          <option value="a2">A2 Elementary</option>
-          <option value="b1">B1 Intermediate</option>
-          <option value="b2">B2 Upper-Intermediate</option>
-        </select>
-        <svg className={css.icon} width="20" height="20">
-          <use href="public/sprite/sprite.svg#icon-chevron-down"></use>
-        </svg>
-      </div>
-
-      <div
-        className={`${css.formGroup} ${isPriceOpen ? css.open : ''}`}
-        onClick={togglePriceOpen}
-        onBlur={() => setIsPriceOpen(false)}
-      >
-        <label>Price</label>
-        <select id="price" className={css.price}>
-          <option value="30">$30</option>
-          <option value="40">$40</option>
-          <option value="50">$50</option>
-        </select>
-        <svg className={css.icon} width="20" height="20">
-          <use href="public/sprite/sprite.svg#icon-chevron-down"></use>
-        </svg>
-      </div>
+    <div className={css.container}>
+      <CustomSelect options={languages} label="Languages" width="224px" />
+      <CustomSelect options={levels} label="Level of knowledge" width="198px" />
+      <CustomSelect options={prices} label="Price" width="124px" />
     </div>
   );
 }
+
 export default SearchForm;
