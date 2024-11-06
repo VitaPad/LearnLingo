@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import css from './CustomSelect.module.css';
-import sprite from 'public/sprite/sprite.svg';
 
 function CustomSelect({ options, label, width }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +17,7 @@ function CustomSelect({ options, label, width }) {
       <div className={css.selectedOption} onClick={toggleDropdown}>
         {selectedOption}
         <svg className={css.icon} width="20" height="20">
-          <use href={`${sprite}#icon-chevron-down`}></use>
+          <use href="/sprite/sprite.svg#icon-chevron-down"></use>
         </svg>
       </div>
       {isOpen && (
