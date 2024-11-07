@@ -3,9 +3,12 @@ import { getTeachers } from '../../services/teachersService';
 import css from './TeachersList.module.css';
 import LevelsList from '../LevelsList/LevelsList';
 import TeacherCardHeader from '../TeacherCardHeader/TeacherCardHeader';
+import TeacherDetails from '../TeacherDetails/TeacherDetails';
+import BookButton from '../BookButton/BookButton';
 
 function TeachersList({ theme }) {
   const [teachers, setTeachers] = useState([]);
+  const [expandedTeachers, setExpandedTeachers] = useState({});
 
   useEffect(() => {
     async function fetchTeachers() {
@@ -14,6 +17,14 @@ function TeachersList({ theme }) {
     }
     fetchTeachers();
   }, []);
+
+  const toggleReadMore = index => {
+    setExpandedTeachers(prev => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
     <div className={css.containerList}>
       {teachers.map((teacher, index) => (
@@ -50,8 +61,23 @@ function TeachersList({ theme }) {
               <span className={css.label}>Condition: </span>
               {teacher.conditions}
             </p>
-            <button className={css.button}>Read more</button>
+            {expandedTeachers[index] ? (
+              <>
+                <TeacherDetails
+                  experience={teacher.experience}
+                  reviews={teacher.reviews}
+                />
+              </>
+            ) : (
+              <button
+                className={css.button}
+                onClick={() => toggleReadMore(index)}
+              >
+                Read more
+              </button>
+            )}
             <LevelsList levels={teacher.levels} />
+            {expandedTeachers[index] && <BookButton />}
             <TeacherCardHeader
               lessonsDone={teacher.lessons_done}
               pricePerHour={teacher.price_per_hour}

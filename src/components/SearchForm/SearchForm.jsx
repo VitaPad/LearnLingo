@@ -14,7 +14,7 @@ function SearchForm() {
   return (
     <div className={css.container}>
       <CustomSelect options={languages} label="Languages" width="224px" />
-      <CustomSelect options={levels} label="Level of knowledge" width="198px" />
+      <CustomSelect options={levels} label="Level of knowledge" width="224px" />
       <CustomSelect options={prices} label="Price" width="124px" />
     </div>
   );

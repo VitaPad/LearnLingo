@@ -1,0 +1,53 @@
+.text {
+  width: 968px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  margin-top: 8px;
+}
+.reviews {
+  margin-top: 32px;
+}
+.review {
+  display: flex;
+  flex-direction: column;
+}
+.reviewBox {
+  margin-bottom: 32px;
+}
+.comment {
+  margin-top: 16px;
+}
+.avatar {
+  width: 44px;
+  height: 44px;
+}
+.reviewBox {
+  display: flex;
+  gap: 12px;
+}
+.name {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #8a8a89;
+}
+.comment {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #121417;
+}
+.rating {
+  display: flex;
+  flex-direction: column;
+}
+.iconRaiting {
+  margin-right: 8px;
+}
