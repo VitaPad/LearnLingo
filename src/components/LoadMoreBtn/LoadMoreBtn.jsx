@@ -1,8 +1,9 @@
 import { Button } from '@mui/material';
 
-export default function LoadMoreBtn() {
+export default function LoadMoreBtn({ onClick }) {
   return (
     <Button
+      onClick={onClick}
       sx={theme => ({
         color: ' #121417',
         borderRadius: '12px',

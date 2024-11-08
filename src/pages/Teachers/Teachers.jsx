@@ -1,5 +1,5 @@
 /* import Header from '../../components/Header/Header'; */
-import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+/* import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn'; */
 import SearchForm from '../../components/SearchForm/SearchForm';
 import TeachersList from '../../components/TeachersList/TeachersList';
 import css from './Teachers.module.css';
@@ -14,9 +14,9 @@ function Teachers({ theme }) {
       <div className={css.teachersListWrapper}>
         <TeachersList theme={theme} />
       </div>
-      <div className={css.btn}>
+{/*       <div className={css.btn}>
         <LoadMoreBtn theme={theme} />
-      </div>
+      </div> */}
     </div>
   );
 }

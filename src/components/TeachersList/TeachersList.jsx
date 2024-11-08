@@ -5,10 +5,12 @@ import LevelsList from '../LevelsList/LevelsList';
 import TeacherCardHeader from '../TeacherCardHeader/TeacherCardHeader';
 import TeacherDetails from '../TeacherDetails/TeacherDetails';
 import BookButton from '../BookButton/BookButton';
+import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 
 function TeachersList({ theme }) {
   const [teachers, setTeachers] = useState([]);
   const [expandedTeachers, setExpandedTeachers] = useState({});
+  const [visibleTeachers, setVisibleTeachers] = useState(4);
 
   useEffect(() => {
     async function fetchTeachers() {
@@ -24,10 +26,19 @@ function TeachersList({ theme }) {
       [index]: !prev[index],
     }));
   };
+  /*   const loadMoreTeachers = () => {
+    setVisibleTeachers(prevVisible => {
+      const newVisible = prevVisible + 4;
+      return newVisible;
+    });
+  }; */
 
+  const loadMoreTeachers = () => {
+    setVisibleTeachers(prevVisible => prevVisible + 4);
+  };
   return (
     <div className={css.containerList}>
-      {teachers.map((teacher, index) => (
+      {teachers.slice(0, visibleTeachers).map((teacher, index) => (
         <div key={index} className={css.container}>
           <div
             className={css.avatar}
@@ -86,6 +97,11 @@ function TeachersList({ theme }) {
           </div>
         </div>
       ))}
+      <div className={css.btn}>
+        {visibleTeachers < teachers.length && (
+          <LoadMoreBtn theme={theme} onClick={loadMoreTeachers} />
+        )}
+      </div>
     </div>
   );
 }
