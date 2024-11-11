@@ -1,11 +1,10 @@
-/* import Header from '../../components/Header/Header'; */
-/* import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn'; */
+import FavoritesList from '../../components/FavoritesList/FavoritesList';
 import Header from '../../components/Header/Header';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import TeachersList from '../../components/TeachersList/TeachersList';
-import css from './Teachers.module.css';
+/* import TeachersList from '../../components/TeachersList/TeachersList'; */
+import css from './Favorites.module.css';
 
-function Teachers({ theme, toggleTheme }) {
+function Favorites({ theme, toggleTheme }) {
   return (
     <div className={css.container}>
       <Header theme={theme} toggleTheme={toggleTheme} />
@@ -13,10 +12,10 @@ function Teachers({ theme, toggleTheme }) {
         <SearchForm />
       </div>
       <div className={css.teachersListWrapper}>
-        <TeachersList theme={theme} />
+        <FavoritesList theme={theme} />
       </div>
     </div>
   );
 }
 
-export default Teachers;
+export default Favorites;

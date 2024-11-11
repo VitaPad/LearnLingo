@@ -1,4 +1,4 @@
-import { ref, get, update, remove } from 'firebase/database';
+import { ref, get, update, remove, getDatabase } from 'firebase/database';
 import { database } from '../firebaseConfig';
 
 // Додати викладача
@@ -16,6 +16,19 @@ export async function getTeachers() {
   } else {
     console.log('No data available');
     return []; // Возвращаем пустой массив
+  }
+}
+
+export async function fetchTeacherDataFromRealtimeDatabase(teacherId) {
+  const db = getDatabase();
+  const teacherRef = ref(db, `teachers/${teacherId}`);
+  const snapshot = await get(teacherRef);
+
+  if (snapshot.exists()) {
+    return snapshot.val(); // Повертає об'єкт даних про вчителя
+  } else {
+    console.log('Дані про вчителя не знайдено');
+    return null;
   }
 }
 

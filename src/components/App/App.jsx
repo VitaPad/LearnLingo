@@ -6,6 +6,8 @@ import 'normalize.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useState } from 'react';
 import Teachers from '../../pages/Teachers/Teachers';
+import Favorites from '../../pages/Favorites/Favorites';
+
 const themes = [
   createTheme({
     palette: {
@@ -106,6 +108,11 @@ function App() {
             />
           }
         />
+        <Route
+          path="/favorites"
+          element={<Favorites theme={themes[currentThemeIndex]} />}
+        />
+        <Route path="*" element={<Home />} />
       </Routes>
     </ThemeProvider>
   );

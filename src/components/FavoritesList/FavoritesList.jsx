@@ -1,24 +1,54 @@
-import { useEffect, useState } from 'react';
-import { getTeachers } from '../../services/teachersService';
-import css from './TeachersList.module.css';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import BookButton from '../BookButton/BookButton';
 import LevelsList from '../LevelsList/LevelsList';
 import TeacherCardHeader from '../TeacherCardHeader/TeacherCardHeader';
 import TeacherDetails from '../TeacherDetails/TeacherDetails';
-import BookButton from '../BookButton/BookButton';
-import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import {
+  doc,
+  getFirestore /* onSnapshot */,
+  onSnapshot,
+} from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import css from './FavoritesList.module.css';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 
-function TeachersList({ theme }) {
-  const [teachers, setTeachers] = useState([]);
+function FavoritesList({ theme }) {
+  const [favorites, setFavorites] = useState([]);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [visibleTeachers, setVisibleTeachers] = useState(4);
 
+  const auth = getAuth();
+  const db = getFirestore();
   useEffect(() => {
-    async function fetchTeachers() {
-      const data = await getTeachers();
-      setTeachers(data);
-    }
-    fetchTeachers();
-  }, []);
+    let unsubscribe;
+
+    // Відстежуємо зміну стану автентифікації користувача
+    const authUnsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        // Якщо користувач є автентифікованим, створюємо посилання на документ
+        const userDocRef = doc(db, 'users', user.uid);
+
+        // Підписка на зміни у Firestore документі користувача
+        unsubscribe = onSnapshot(userDocRef, docSnapshot => {
+          if (docSnapshot.exists()) {
+            const userData = docSnapshot.data();
+            setFavorites(userData.favorites || []);
+          } else {
+            console.log('Документ користувача не знайдено!');
+          }
+        });
+      } else {
+        // Якщо користувач не автентифікований, очищаємо вибрані
+        setFavorites([]);
+      }
+    });
+
+    // Очищаємо підписку при розмонтуванні компонента
+    return () => {
+      if (unsubscribe) unsubscribe();
+      authUnsubscribe();
+    };
+  }, [auth, db]);
 
   const toggleReadMore = id => {
     setExpandedTeachers(prev => ({
@@ -30,9 +60,10 @@ function TeachersList({ theme }) {
   const loadMoreTeachers = () => {
     setVisibleTeachers(prevVisible => prevVisible + 4);
   };
+
   return (
     <div className={css.containerList}>
-      {teachers.slice(0, visibleTeachers).map(teacher => (
+      {favorites.map(teacher => (
         <div key={teacher.id} className={css.container}>
           <div
             className={css.avatar}
@@ -50,19 +81,16 @@ function TeachersList({ theme }) {
               {teacher.name} {teacher.surname}
             </h3>
             <p className={css.text}>
-              {' '}
               <span className={css.label}>Speaks: </span>
               <span className={`${css.languages} ${css.underline}`}>
                 {teacher.languages.join(', ')}
               </span>
             </p>
             <p className={css.text}>
-              {' '}
               <span className={css.label}>Lesson Info: </span>
               {teacher.lesson_info}
             </p>
             <p className={css.text}>
-              {' '}
               <span className={css.label}>Condition: </span>
               {teacher.conditions}
             </p>
@@ -94,11 +122,12 @@ function TeachersList({ theme }) {
         </div>
       ))}
       <div className={css.btn}>
-        {visibleTeachers < teachers.length && (
+        {visibleTeachers < favorites.length && (
           <LoadMoreBtn theme={theme} onClick={loadMoreTeachers} />
         )}
       </div>
     </div>
   );
 }
-export default TeachersList;
+
+export default FavoritesList;

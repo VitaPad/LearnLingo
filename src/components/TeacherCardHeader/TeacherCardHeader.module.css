@@ -48,8 +48,11 @@
 .icon {
   margin-left: 64px;
   fill: none;
-  stroke: #121417;
+  /*   stroke: #121417; */
+  cursor: pointer;
+  transition: fill 0.3s;
 }
+
 .iconRaiting {
   margin-right: 8px;
 }

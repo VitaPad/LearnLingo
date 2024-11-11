@@ -1,0 +1,8 @@
+.container {
+  background-color: #f8f8f8;
+}
+.searchFormWrapper,
+.teachersListWrapper {
+  max-width: 1184px;
+  margin: 0 auto;
+}

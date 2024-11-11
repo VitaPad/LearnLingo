@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { GoogleAuthProvider } from 'firebase/auth/web-extension';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN;
@@ -25,3 +26,4 @@ export const app = initializeApp(firebaseConfig);
 export const googleAuthProvider = new GoogleAuthProvider();
 export const auth = getAuth(app);
 export const database = getDatabase(app);
+export const db = getFirestore(app);
