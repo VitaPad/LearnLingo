@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import css from './Promo.module.css';
 
 function Promo({ theme }) {
+  const navigate = useNavigate();
+  const handleGetStartedClick = () => {
+    navigate('/teachers');
+  };
+
   return (
     <div className={css.container}>
       <h1 className={css.h1}>
@@ -27,6 +33,7 @@ function Promo({ theme }) {
           '--primary-main': theme.palette.primary.main,
           '--primary-light': theme.palette.primary.light,
         }}
+        onClick={handleGetStartedClick}
       >
         Get started
       </button>

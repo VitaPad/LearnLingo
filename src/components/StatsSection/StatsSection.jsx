@@ -12,7 +12,7 @@ function StatsSection({ theme }) {
     <Box
       className={css.box}
       sx={{
-        border: `2px dashed ${theme.palette.primary.main}`, 
+        border: `2px dashed ${theme.palette.primary.main}`,
       }}
     >
       <Grid container spacing={4} justifyContent="center" className={css.stats}>
@@ -39,12 +39,3 @@ function StatsSection({ theme }) {
 }
 
 export default StatsSection;
-
-/*   sx={{
-        border: `2px dashed ${theme.palette.primary.main}`, // Помаранчева пунктирна лінія
-        borderRadius: '30px',
-        padding: 4,
-        marginY: 4,
-        display: 'flex',
-        justifyContent: 'center',
-      }} */

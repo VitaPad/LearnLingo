@@ -21,40 +21,19 @@ const style = {
   boxShadow: 24,
 };
 
-export default function RegisterModal({ open, handleClose, setUserName }) {
+export default function RegisterModal({ open, handleClose }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  /* 
-  const handleRegister = async e => {
-    e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
 
-      // Оновлюємо профіль користувача, щоб додати ім'я
-      await updateProfile(user, { displayName: name });
-      setUserName(name);
-      handleClose();
-      console.log('User registered:', userCredential.user);
-    } catch (error) {
-      console.error('Error during registration:', error);
-    }
- */
   const handleRegister = async e => {
     e.preventDefault();
     try {
       const user = await registerUser(email, password, name);
-      setUserName(user.displayName);
       handleClose();
       console.log('User registered:', user);
     } catch (error) {
-      // Перевірка на тип помилки
       if (error.code === 'auth/email-already-in-use') {
         setError('This email is already in use. Please try another email.');
       }

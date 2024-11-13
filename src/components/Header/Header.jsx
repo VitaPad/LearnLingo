@@ -9,7 +9,6 @@ import LogInModal from '../LogInModal/LogInModal';
 function Header({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
-  const [userName, setUserName] = useState('');
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -21,7 +20,6 @@ function Header({ theme, toggleTheme }) {
     <header className={css.header}>
       <Logo />
       <Navigation theme={theme} />
-      {userName ? <h2>Hello, {userName}!</h2> : null}
       <UserActions
         theme={theme}
         toggleTheme={toggleTheme}
@@ -29,11 +27,7 @@ function Header({ theme, toggleTheme }) {
         handleOpenRegister={handleOpenRegister}
       />
       <LogInModal open={open} handleClose={handleClose} theme={theme} />
-      <RegisterModal
-        open={openRegister}
-        handleClose={handleCloseRegister}
-        setUserName={setUserName}
-      />
+      <RegisterModal open={openRegister} handleClose={handleCloseRegister} />
     </header>
   );
 }

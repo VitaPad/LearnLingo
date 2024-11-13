@@ -110,7 +110,12 @@ function App() {
         />
         <Route
           path="/favorites"
-          element={<Favorites theme={themes[currentThemeIndex]} />}
+          element={
+            <Favorites
+              theme={themes[currentThemeIndex]}
+              toggleTheme={toggleTheme}
+            />
+          }
         />
         <Route path="*" element={<Home />} />
       </Routes>
