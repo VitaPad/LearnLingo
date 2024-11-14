@@ -23,17 +23,32 @@ const style = {
 function LogInModal({ open, handleClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  /*   const [error, setError] = useState(''); */
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleLogin = async () => {
+    const emailRegex =
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    if (!emailRegex.test(email)) {
+      setEmailError('Email format is incorrect');
+      return;
+    }
+
+    // Валідація пароля (наприклад: мінімум 6 символів)
+    if (password.length < 6) {
+      setPasswordError('Password must contain at least 6 characters');
+      return;
+    }
+
     try {
-      setError(''); // Очищаємо попередню помилку
+      /*       setEmailError(''); // Очищаємо попередню помилку */
       const user = await loginUser(email, password);
       console.log('User logged in:', user);
       handleClose(); // Закриваємо модалку після успішного входу
     } catch (error) {
       // Відображаємо повідомлення про помилку для користувача
-      setError(error.message);
+      error(error.message);
     }
   };
 
@@ -97,6 +112,11 @@ function LogInModal({ open, handleClose }) {
             },
           }}
         />
+        {emailError && (
+          <Typography color="error" sx={{ mt: 2 }}>
+            {emailError}
+          </Typography>
+        )}
         <TextField
           fullWidth
           label="Password"
@@ -110,9 +130,9 @@ function LogInModal({ open, handleClose }) {
             },
           }}
         />
-        {error && (
+        {passwordError && (
           <Typography color="error" sx={{ mt: 2 }}>
-            {error}
+            {passwordError}
           </Typography>
         )}
         <Button

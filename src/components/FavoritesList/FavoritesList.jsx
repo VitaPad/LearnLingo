@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import css from './FavoritesList.module.css';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 
-function FavoritesList({ theme }) {
+function FavoritesList({ theme, filters }) {
   const [favorites, setFavorites] = useState([]);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [visibleTeachers, setVisibleTeachers] = useState(4);
@@ -50,6 +50,19 @@ function FavoritesList({ theme }) {
     };
   }, [auth, db]);
 
+  const filteredFavorites = favorites
+    .filter(favorite =>
+      filters.language ? favorite.languages.includes(filters.language) : true
+    )
+    .filter(favorite =>
+      filters.level ? favorite.levels.includes(filters.level) : true
+    )
+    .filter(favorite =>
+      filters.price
+        ? favorite.price_per_hour === parseInt(filters.price.slice(1))
+        : true
+    );
+
   const toggleReadMore = id => {
     setExpandedTeachers(prev => ({
       ...prev,
@@ -63,7 +76,7 @@ function FavoritesList({ theme }) {
 
   return (
     <div className={css.containerList}>
-      {favorites.map(teacher => (
+      {filteredFavorites.map(teacher => (
         <div key={teacher.id} className={css.container}>
           <div
             className={css.avatar}
@@ -109,7 +122,11 @@ function FavoritesList({ theme }) {
                 Read more
               </button>
             )}
-            <LevelsList levels={teacher.levels} />
+            <LevelsList
+              levels={teacher.levels}
+              selectedLevel={filters.level}
+              theme={theme}
+            />
             {expandedTeachers[teacher.id] && <BookButton />}
             <TeacherCardHeader
               theme={theme}

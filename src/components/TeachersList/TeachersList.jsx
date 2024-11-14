@@ -7,7 +7,7 @@ import TeacherDetails from '../TeacherDetails/TeacherDetails';
 import BookButton from '../BookButton/BookButton';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 
-function TeachersList({ theme }) {
+function TeachersList({ theme, filters }) {
   const [teachers, setTeachers] = useState([]);
   const [expandedTeachers, setExpandedTeachers] = useState({});
   const [visibleTeachers, setVisibleTeachers] = useState(4);
@@ -19,6 +19,19 @@ function TeachersList({ theme }) {
     }
     fetchTeachers();
   }, []);
+
+  const filteredTeachers = teachers
+    .filter(teacher =>
+      filters.language ? teacher.languages.includes(filters.language) : true
+    )
+    .filter(teacher =>
+      filters.level ? teacher.levels.includes(filters.level) : true
+    )
+    .filter(teacher =>
+      filters.price
+        ? teacher.price_per_hour === parseInt(filters.price.slice(1))
+        : true
+    );
 
   const toggleReadMore = id => {
     setExpandedTeachers(prev => ({
@@ -32,7 +45,7 @@ function TeachersList({ theme }) {
   };
   return (
     <div className={css.containerList}>
-      {teachers.slice(0, visibleTeachers).map(teacher => (
+      {filteredTeachers.slice(0, visibleTeachers).map(teacher => (
         <div key={teacher.id} className={css.container}>
           <div
             className={css.avatar}
@@ -81,7 +94,11 @@ function TeachersList({ theme }) {
                 Read more
               </button>
             )}
-            <LevelsList levels={teacher.levels} />
+            <LevelsList
+              levels={teacher.levels}
+              selectedLevel={filters.level}
+              theme={theme}
+            />
             {expandedTeachers[teacher.id] && <BookButton />}
             <TeacherCardHeader
               theme={theme}

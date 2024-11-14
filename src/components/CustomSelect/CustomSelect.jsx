@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './CustomSelect.module.css';
 
-function CustomSelect({ options, label, width }) {
+function CustomSelect({ options, label, width, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -9,6 +9,7 @@ function CustomSelect({ options, label, width }) {
   const selectOption = option => {
     setSelectedOption(option);
     setIsOpen(false);
+    onChange(option);
   };
 
   return (

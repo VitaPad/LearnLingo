@@ -25,21 +25,51 @@ export default function RegisterModal({ open, handleClose }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleRegister = async e => {
     e.preventDefault();
+
+    // Очищаємо попередні помилки
+    setEmailError('');
+    setPasswordError('');
+
+    // Валідація формату електронної пошти
+    const emailRegex =
+      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    if (!emailRegex.test(email)) {
+      setEmailError('Email format is incorrect');
+      return;
+    }
+
+    // Валідація пароля (наприклад: мінімум 6 символів)
+    if (password.length < 6) {
+      setPasswordError('Password must contain at least 6 characters');
+      return;
+    }
+
     try {
+      // Реєстрація користувача
       const user = await registerUser(email, password, name);
       handleClose();
       console.log('User registered:', user);
     } catch (error) {
+      // Перевірка коду помилки Firebase
       if (error.code === 'auth/email-already-in-use') {
-        setError('This email is already in use. Please try another email.');
+        setEmailError('This email is already in use. Try another one.');
+      } else if (error.code === 'auth/invalid-email') {
+        setEmailError('The email address is invalid.');
+      } else if (error.code === 'auth/weak-password') {
+        setPasswordError(
+          'The password is too weak. Please use a stronger password.'
+        );
+      } else {
+        console.error('Error during registration:', error);
       }
-      console.error('Error during registration:', error);
     }
   };
+
   return (
     <Modal
       open={open}
@@ -125,9 +155,9 @@ export default function RegisterModal({ open, handleClose }) {
             }}
             onChange={e => setEmail(e.target.value)}
           />
-          {error && (
+          {emailError && (
             <Typography color="error" sx={{ marginTop: '10px' }}>
-              {error}
+              {emailError}
             </Typography>
           )}
           <TextField
@@ -150,6 +180,11 @@ export default function RegisterModal({ open, handleClose }) {
             }}
             onChange={e => setPassword(e.target.value)}
           />
+          {passwordError && (
+            <Typography color="error" sx={{ marginTop: '10px' }}>
+              {passwordError}
+            </Typography>
+          )}
           <Button
             type="submit"
             fullWidth
