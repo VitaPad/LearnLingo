@@ -48,7 +48,6 @@
 .icon {
   margin-left: 64px;
   fill: none;
-  /*   stroke: #121417; */
   cursor: pointer;
   transition: fill 0.3s;
 }

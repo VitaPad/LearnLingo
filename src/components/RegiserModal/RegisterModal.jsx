@@ -31,11 +31,9 @@ export default function RegisterModal({ open, handleClose }) {
   const handleRegister = async e => {
     e.preventDefault();
 
-    // Очищаємо попередні помилки
     setEmailError('');
     setPasswordError('');
 
-    // Валідація формату електронної пошти
     const emailRegex =
       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     if (!emailRegex.test(email)) {
@@ -43,19 +41,16 @@ export default function RegisterModal({ open, handleClose }) {
       return;
     }
 
-    // Валідація пароля (наприклад: мінімум 6 символів)
     if (password.length < 6) {
       setPasswordError('Password must contain at least 6 characters');
       return;
     }
 
     try {
-      // Реєстрація користувача
       const user = await registerUser(email, password, name);
       handleClose();
       console.log('User registered:', user);
     } catch (error) {
-      // Перевірка коду помилки Firebase
       if (error.code === 'auth/email-already-in-use') {
         setEmailError('This email is already in use. Try another one.');
       } else if (error.code === 'auth/invalid-email') {
@@ -115,7 +110,7 @@ export default function RegisterModal({ open, handleClose }) {
           need some information. Please provide us with the following
           information
         </Typography>
-        <Box component="form" onSubmit={handleRegister} /* sx={{ mt: 3 }} */>
+        <Box component="form" onSubmit={handleRegister}>
           <TextField
             variant="outlined"
             margin="normal"

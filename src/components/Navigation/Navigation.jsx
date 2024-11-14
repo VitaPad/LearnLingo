@@ -14,7 +14,7 @@ function Navigation({ theme }) {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, user => {
-      setUser(user); // Оновлення стану користувача
+      setUser(user);
     });
     return () => unsubscribe();
   }, []);

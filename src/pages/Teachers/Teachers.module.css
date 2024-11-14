@@ -1,18 +1,8 @@
 .container {
   background-color: #f8f8f8;
-  /*  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: flex-start;
-  flex-direction: column; */
 }
 .searchFormWrapper,
 .teachersListWrapper {
   max-width: 1184px;
   margin: 0 auto;
 }
-/* .btn {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-} */

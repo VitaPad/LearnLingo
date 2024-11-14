@@ -1,6 +1,6 @@
 .selectContainer {
   position: relative;
-  width: 200px; /* Можна змінити ширину */
+  width: 200px;
 }
 
 label {
@@ -20,7 +20,7 @@ label {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  border: 1px solid #e0e0e0; /* Додайте обвідку для кращого вигляду */
+  border: 1px solid #e0e0e0;
 }
 
 .icon {

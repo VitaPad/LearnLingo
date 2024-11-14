@@ -10,7 +10,7 @@ function TeacherDetails({ experience, reviews }) {
           <div key={idx} className={css.review}>
             <div className={css.reviewBox}>
               <img
-                src={review.avatar_url || defaultAvatar} // Використовуємо аватар за замовчуванням, якщо `avatar_url` немає
+                src={review.avatar_url || defaultAvatar}
                 alt={`${review.reviewer_name}'s avatar`}
                 className={css.avatar}
               />

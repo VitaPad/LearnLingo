@@ -3,11 +3,7 @@ import BookButton from '../BookButton/BookButton';
 import LevelsList from '../LevelsList/LevelsList';
 import TeacherCardHeader from '../TeacherCardHeader/TeacherCardHeader';
 import TeacherDetails from '../TeacherDetails/TeacherDetails';
-import {
-  doc,
-  getFirestore /* onSnapshot */,
-  onSnapshot,
-} from 'firebase/firestore';
+import { doc, getFirestore, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import css from './FavoritesList.module.css';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
@@ -22,13 +18,10 @@ function FavoritesList({ theme, filters }) {
   useEffect(() => {
     let unsubscribe;
 
-    // Відстежуємо зміну стану автентифікації користувача
     const authUnsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
-        // Якщо користувач є автентифікованим, створюємо посилання на документ
         const userDocRef = doc(db, 'users', user.uid);
 
-        // Підписка на зміни у Firestore документі користувача
         unsubscribe = onSnapshot(userDocRef, docSnapshot => {
           if (docSnapshot.exists()) {
             const userData = docSnapshot.data();
@@ -38,12 +31,10 @@ function FavoritesList({ theme, filters }) {
           }
         });
       } else {
-        // Якщо користувач не автентифікований, очищаємо вибрані
         setFavorites([]);
       }
     });
 
-    // Очищаємо підписку при розмонтуванні компонента
     return () => {
       if (unsubscribe) unsubscribe();
       authUnsubscribe();

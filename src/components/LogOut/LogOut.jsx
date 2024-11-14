@@ -18,7 +18,7 @@ function LogOut({ theme, onClick }) {
         textAlign: 'left',
         textTransform: 'none',
         color: 'rgba(18, 20, 23, 1)',
-        boxShadow: 'none', // Прибирає початковий box-shadow
+        boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
         },
@@ -34,7 +34,7 @@ function LogOut({ theme, onClick }) {
         style={{
           '--primary-main': theme.palette.primary.main,
           '--primary-light': theme.palette.primary.light,
-          transform: 'scaleX(-1)', // Перевертання по горизонталі
+          transform: 'scaleX(-1)',
         }}
       >
         <use href="/sprite/sprite.svg#icon-log-in-01"></use>

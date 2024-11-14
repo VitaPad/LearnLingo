@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import css from './Logo.module.css';
-/* import sprite from '../../image/sprite/sprite.svg'; */
+
 function Logo() {
   return (
     <NavLink to="/" className={css.navLogo}>
@@ -12,5 +12,3 @@ function Logo() {
   );
 }
 export default Logo;
-
-/* {`${sprite}#icon-ukraine-1`} */

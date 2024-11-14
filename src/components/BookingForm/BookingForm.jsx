@@ -30,8 +30,6 @@ function BookingFormModal({ open, onClose }) {
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
-    // Скидання помилки при зміні значення поля
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -41,7 +39,6 @@ function BookingFormModal({ open, onClose }) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
   const validatePhoneNumber = phoneNumber => {
-    // Перевірка, щоб номер складався щонайменше з 11 цифр і був числом
     return /^\d{10,}$/.test(phoneNumber);
   };
 
@@ -76,7 +73,6 @@ function BookingFormModal({ open, onClose }) {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      // Тут можна відправити дані форми на сервер або виконати інші дії
       onClose();
     }
   };
@@ -219,7 +215,6 @@ function BookingFormModal({ open, onClose }) {
             letterSpacing: '-0.02em',
             textAlign: 'left',
           }}
-          /*        onClick={onClose} */
           onClick={handleSubmit}
         >
           Book

@@ -37,8 +37,6 @@ function BookButton() {
       >
         Book trial lesson
       </Button>
-
-      {/* Модальне вікно з формою */}
       <BookingFormModal open={openModal} onClose={handleCloseModal} />
     </>
   );

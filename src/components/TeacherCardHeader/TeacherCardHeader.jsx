@@ -36,7 +36,7 @@ function TeacherCardHeader({
             );
           }
         } catch (error) {
-          console.error('Помилка при отриманні документа користувача:', error);
+          console.error('Error retrieving user document:', error);
         }
       }
     };
@@ -48,38 +48,33 @@ function TeacherCardHeader({
 
   const handleFavoriteClick = async () => {
     if (!auth.currentUser) {
-      alert('Ця функція доступна тільки для авторизованих користувачів');
+      alert('This feature is only available to authorized users');
       return;
     }
 
     const userDocRef = doc(db, 'users', auth.currentUser.uid);
 
     try {
-      // Отримуємо повні дані про вчителя з Realtime Database
       const teacherData = await fetchTeacherDataFromRealtimeDatabase(teacherId);
 
       if (!teacherData) {
-        console.error('Дані вчителя не знайдено.');
+        console.error('Teacher data not found.');
         return;
       }
 
       if (isFavorite) {
-        // Видаляємо повний об'єкт вчителя з favorites
         await updateDoc(userDocRef, {
           favorites: arrayRemove(teacherData),
         });
-        console.log(`Видалено вчителя ${teacherId} з улюблених`);
       } else {
-        // Додаємо повний об'єкт вчителя в favorites
         await updateDoc(userDocRef, {
           favorites: arrayUnion(teacherData),
         });
-        console.log(`Додано вчителя ${teacherId} до улюблених`);
       }
 
       setIsFavorite(!isFavorite);
     } catch (error) {
-      console.error('Помилка оновлення списку улюблених:', error);
+      console.error('Error updating favorites list:', error);
     }
   };
 
