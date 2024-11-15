@@ -45,76 +45,84 @@ function TeachersList({ theme, filters }) {
   };
   return (
     <div className={css.containerList}>
-      {filteredTeachers.slice(0, visibleTeachers).map(teacher => (
-        <div key={teacher.id} className={css.container}>
-          <div
-            className={css.avatar}
-            style={{ border: `3px solid ${theme.palette.primary.main}` }}
-          >
-            <img
-              src={teacher.avatar_url}
-              alt={`${teacher.name} ${teacher.surname}`}
-              className={css.img}
-            />
+      {filteredTeachers.length === 0 ? (
+        <p className={css.noResults}>
+          Sorry, no teacher was found for your request.
+        </p>
+      ) : (
+        filteredTeachers.slice(0, visibleTeachers).map(teacher => (
+          <div key={teacher.id} className={css.container}>
+            <div
+              className={css.avatar}
+              style={{ border: `3px solid ${theme.palette.primary.main}` }}
+            >
+              <img
+                src={teacher.avatar_url}
+                alt={`${teacher.name} ${teacher.surname}`}
+                className={css.img}
+              />
+            </div>
+            <div className={css.infoBox}>
+              <span className={css.label}>Languages</span>
+              <h3 className={css.h3}>
+                {teacher.name} {teacher.surname}
+              </h3>
+              <p className={css.text}>
+                {' '}
+                <span className={css.label}>Speaks: </span>
+                <span className={`${css.languages} ${css.underline}`}>
+                  {teacher.languages.join(', ')}
+                </span>
+              </p>
+              <p className={css.text}>
+                {' '}
+                <span className={css.label}>Lesson Info: </span>
+                {teacher.lesson_info}
+              </p>
+              <p className={css.text}>
+                {' '}
+                <span className={css.label}>Condition: </span>
+                {teacher.conditions}
+              </p>
+              {expandedTeachers[teacher.id] ? (
+                <>
+                  <TeacherDetails
+                    experience={teacher.experience}
+                    reviews={teacher.reviews}
+                  />
+                </>
+              ) : (
+                <button
+                  className={css.button}
+                  onClick={() => toggleReadMore(teacher.id)}
+                >
+                  Read more
+                </button>
+              )}
+              <LevelsList
+                levels={teacher.levels}
+                selectedLevel={filters.level}
+                theme={theme}
+              />
+              {expandedTeachers[teacher.id] && <BookButton />}
+              <TeacherCardHeader
+                theme={theme}
+                teacherId={teacher.id}
+                lessonsDone={teacher.lessons_done}
+                pricePerHour={teacher.price_per_hour}
+                rating={teacher.rating}
+              />
+            </div>
           </div>
-          <div className={css.infoBox}>
-            <span className={css.label}>Languages</span>
-            <h3 className={css.h3}>
-              {teacher.name} {teacher.surname}
-            </h3>
-            <p className={css.text}>
-              {' '}
-              <span className={css.label}>Speaks: </span>
-              <span className={`${css.languages} ${css.underline}`}>
-                {teacher.languages.join(', ')}
-              </span>
-            </p>
-            <p className={css.text}>
-              {' '}
-              <span className={css.label}>Lesson Info: </span>
-              {teacher.lesson_info}
-            </p>
-            <p className={css.text}>
-              {' '}
-              <span className={css.label}>Condition: </span>
-              {teacher.conditions}
-            </p>
-            {expandedTeachers[teacher.id] ? (
-              <>
-                <TeacherDetails
-                  experience={teacher.experience}
-                  reviews={teacher.reviews}
-                />
-              </>
-            ) : (
-              <button
-                className={css.button}
-                onClick={() => toggleReadMore(teacher.id)}
-              >
-                Read more
-              </button>
-            )}
-            <LevelsList
-              levels={teacher.levels}
-              selectedLevel={filters.level}
-              theme={theme}
-            />
-            {expandedTeachers[teacher.id] && <BookButton />}
-            <TeacherCardHeader
-              theme={theme}
-              teacherId={teacher.id}
-              lessonsDone={teacher.lessons_done}
-              pricePerHour={teacher.price_per_hour}
-              rating={teacher.rating}
-            />
-          </div>
+        ))
+      )}
+      {filteredTeachers.length > 0 && (
+        <div className={css.btn}>
+          {visibleTeachers < teachers.length && (
+            <LoadMoreBtn theme={theme} onClick={loadMoreTeachers} />
+          )}
         </div>
-      ))}
-      <div className={css.btn}>
-        {visibleTeachers < teachers.length && (
-          <LoadMoreBtn theme={theme} onClick={loadMoreTeachers} />
-        )}
-      </div>
+      )}
     </div>
   );
 }

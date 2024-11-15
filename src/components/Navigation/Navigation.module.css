@@ -8,10 +8,12 @@
   color: #121417;
   text-decoration: none;
   transition: color 0.3s;
+  cursor: pointer;
 }
 
 .link:hover {
   color: var(--primary-main);
+  transform: translateY(-2px);
 }
 
 .active {

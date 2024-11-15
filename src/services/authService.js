@@ -14,7 +14,7 @@ const addUserToDatabase = async user => {
     await setDoc(userRef, {
       name: user.displayName || 'Anonymous',
       email: user.email,
-      favorites: [], // Порожній масив для улюблених вчителів
+      favorites: [],
     });
     console.log('User added to database successfully');
   } catch (error) {
@@ -31,15 +31,14 @@ export const registerUser = async (email, password, name) => {
     );
     const user = userCredential.user;
 
-    // Оновлюємо профіль користувача, щоб додати ім'я
     await updateProfile(user, { displayName: name });
-    // Додаємо користувача до бази даних
+
     await addUserToDatabase(user);
 
-    return user; // повертаємо користувача, якщо реєстрація успішна
+    return user;
   } catch (error) {
     console.error('Error during registration:', error);
-    throw error; // проброс помилки для обробки у компоненті
+    throw error;
   }
 };
 

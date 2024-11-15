@@ -67,3 +67,7 @@
   justify-content: center;
   margin-bottom: 24px;
 }
+.emptyMessage {
+  text-align: center;
+  margin-top: 64px;
+}

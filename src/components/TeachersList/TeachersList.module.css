@@ -8,7 +8,13 @@
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
 }
+.button:hover,
+.button:focus {
+  text-shadow: 0px 3px 10px rgba(114, 114, 114, 0.5);
+}
+
 .containerList {
   display: flex;
   flex-direction: column;
@@ -66,4 +72,9 @@
   display: flex;
   justify-content: center;
   margin-bottom: 24px;
+}
+
+.noResults {
+  text-align: center;
+  margin-top: 64px;
 }

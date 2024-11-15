@@ -6,6 +6,7 @@ export default function LoadMoreBtn({ onClick }) {
       onClick={onClick}
       sx={theme => ({
         color: ' #121417',
+        cursor: 'pointer',
         borderRadius: '12px',
         paddingLeft: '48px',
         paddingRight: '48px',

@@ -20,6 +20,11 @@ label {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  /*   border: 1px solid #e0e0e0; */
+}
+
+.selectedOption:hover,
+.selectedOption:focus {
   border: 1px solid #e0e0e0;
 }
 

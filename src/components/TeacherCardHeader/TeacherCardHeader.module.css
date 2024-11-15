@@ -4,8 +4,6 @@
   right: 24px;
   display: flex;
   align-items: center;
-  /* margin: 16px; */
-  /*   gap: 10px;  */
 }
 
 .item {
@@ -21,9 +19,7 @@
   align-items: center;
   justify-content: center;
 }
-/* .textItems:last-child {
-  border: none;
-} */
+
 .iconBook {
   margin-right: 8px;
   fill: none;
@@ -50,6 +46,7 @@
   fill: none;
   cursor: pointer;
   transition: fill 0.3s;
+  cursor: pointer;
 }
 
 .iconRaiting {
