@@ -8,6 +8,7 @@ import { lazy, Suspense, useState } from 'react'; /*
 import Teachers from '../../pages/Teachers/Teachers'; */
 /* import Favorites from '../../pages/Favorites/Favorites'; */
 import themes from '../Themes/Themes';
+import Loading from '../Loading/Loading';
 
 const Home = lazy(() => import('../../pages/Home/Home'));
 const Teachers = lazy(() => import('../../pages/Teachers/Teachers'));
@@ -23,7 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={themes[currentThemeIndex]}>
       <CssBaseline />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route
             path="/"
