@@ -16,7 +16,6 @@ const addUserToDatabase = async user => {
       email: user.email,
       favorites: [],
     });
-    console.log('User added to database successfully');
   } catch (error) {
     console.error('Error adding user to database:', error);
     throw error;
@@ -49,7 +48,7 @@ export const loginUser = async (email, password) => {
       email,
       password
     );
-    console.log('UserCredential:', userCredential);
+    /*     console.log('UserCredential:', userCredential); */
     return userCredential.user;
   } catch (error) {
     if (error.code === 'auth/user-not-found') {
@@ -65,7 +64,6 @@ export const loginUser = async (email, password) => {
 export const logoutUser = async () => {
   try {
     await signOut(auth);
-    console.log('User logged out successfully');
   } catch (error) {
     console.error('Error during logout:', error);
   }

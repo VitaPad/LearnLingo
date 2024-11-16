@@ -10,6 +10,7 @@ import {
 import css from './LogInModal.module.css';
 import { loginUser } from '../../services/authService';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const style = {
   position: 'absolute',
@@ -41,7 +42,7 @@ function LogInModal({ open, handleClose }) {
 
     try {
       const user = await loginUser(email, password);
-      console.log('User logged in:', user);
+      toast.success('Login successful! Welcome!');
       handleClose();
     } catch (error) {
       error(error.message);

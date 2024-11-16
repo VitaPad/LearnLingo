@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { logoutUser } from '../../services/authService';
 import LogOut from '../LogOut/LogOut';
+import { toast } from 'react-toastify';
 
 function UserActions({ theme, toggleTheme, handleOpen, handleOpenRegister }) {
   const [user, setUser] = useState(null);
@@ -11,18 +12,18 @@ function UserActions({ theme, toggleTheme, handleOpen, handleOpenRegister }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser); 
+      setUser(currentUser);
     });
-    return unsubscribe; 
+    return unsubscribe;
   }, [auth]);
 
   const handleLogout = async () => {
     try {
       await logoutUser(auth);
-      setUser(null); 
-      console.log('User logged out successfully');
+      setUser(null);
+      toast.success('User logged out successfully');
     } catch (error) {
-      console.error('Error during logout:', error);
+      toast.error('Error during logout:', error);
     }
   };
 

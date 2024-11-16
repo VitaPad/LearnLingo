@@ -21,7 +21,7 @@ export async function fetchTeacherDataFromRealtimeDatabase(teacherId) {
   if (snapshot.exists()) {
     return snapshot.val();
   } else {
-    console.log('Дані про вчителя не знайдено');
+    console.log('No information about the teacher was found');
     return null;
   }
 }

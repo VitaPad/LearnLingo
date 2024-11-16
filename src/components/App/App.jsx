@@ -9,6 +9,10 @@ import Teachers from '../../pages/Teachers/Teachers'; */
 /* import Favorites from '../../pages/Favorites/Favorites'; */
 import themes from '../Themes/Themes';
 import Loading from '../Loading/Loading';
+import { ToastContainer } from 'react-toastify';
+import css from './App.module.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './toast.css';
 
 const Home = lazy(() => import('../../pages/Home/Home'));
 const Teachers = lazy(() => import('../../pages/Teachers/Teachers'));
@@ -25,6 +29,19 @@ function App() {
     <ThemeProvider theme={themes[currentThemeIndex]}>
       <CssBaseline />
       <Suspense fallback={<Loading />}>
+        {/*    <div className={css.toastContainer}> */}
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={true}
+          closeOnClick
+          closeButton={false}
+          pauseOnHover
+          draggable
+          toastClassName="custom-toast"
+          limit={1}
+        />
+        {/*         </div> */}
         <Routes>
           <Route
             path="/"

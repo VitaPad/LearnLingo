@@ -11,6 +11,7 @@ import css from './RegisterModal.module.css';
 import { useState } from 'react';
 import { registerUser } from '../../services/authService';
 import { AuthProvider } from '../../auth/AuthProvider';
+import { toast } from 'react-toastify';
 
 const style = {
   position: 'absolute',
@@ -48,8 +49,8 @@ export default function RegisterModal({ open, handleClose }) {
 
     try {
       const user = await registerUser(email, password, name);
+      toast.success('Congratulations, registration is successful.');
       handleClose();
-      console.log('User registered:', user);
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         setEmailError('This email is already in use. Try another one.');
@@ -60,7 +61,7 @@ export default function RegisterModal({ open, handleClose }) {
           'The password is too weak. Please use a stronger password.'
         );
       } else {
-        console.error('Error during registration:', error);
+        toast.error('Error during registration:', error);
       }
     }
   };
