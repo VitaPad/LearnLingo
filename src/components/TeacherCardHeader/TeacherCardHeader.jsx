@@ -11,6 +11,7 @@ import { getAuth } from 'firebase/auth';
 
 import css from './TeacherCardHeader.module.css';
 import { fetchTeacherDataFromRealtimeDatabase } from '../../services/teachersService';
+import { toast } from 'react-toastify';
 
 function TeacherCardHeader({
   teacherId,
@@ -48,7 +49,7 @@ function TeacherCardHeader({
 
   const handleFavoriteClick = async () => {
     if (!auth.currentUser) {
-      alert('This feature is only available to authorized users');
+      toast.warn('This feature is only available to authorized users');
       return;
     }
 
@@ -58,7 +59,7 @@ function TeacherCardHeader({
       const teacherData = await fetchTeacherDataFromRealtimeDatabase(teacherId);
 
       if (!teacherData) {
-        console.error('Teacher data not found.');
+        toast.error('Unable to find teacher data. Please try again later.');
         return;
       }
 
@@ -66,13 +67,24 @@ function TeacherCardHeader({
         await updateDoc(userDocRef, {
           favorites: arrayRemove(teacherData),
         });
+        setIsFavorite(false);
+        toast.info(
+          `${teacherData.name} has been removed from your favorites.`,
+          {
+            autoClose: 3000,
+          }
+        );
       } else {
         await updateDoc(userDocRef, {
           favorites: arrayUnion(teacherData),
         });
+        setIsFavorite(true);
+        toast.success(`${teacherData.name} has been added to your favorites!`, {
+          autoClose: 3000,
+        });
       }
 
-      setIsFavorite(!isFavorite);
+      /*    setIsFavorite(!isFavorite); */
     } catch (error) {
       console.error('Error updating favorites list:', error);
     }

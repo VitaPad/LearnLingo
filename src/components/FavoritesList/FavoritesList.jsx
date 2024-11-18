@@ -27,7 +27,7 @@ function FavoritesList({ theme, filters }) {
             const userData = docSnapshot.data();
             setFavorites(userData.favorites || []);
           } else {
-            console.log('Документ користувача не знайдено!');
+            console.log('User document not found!');
           }
         });
       } else {

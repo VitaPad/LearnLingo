@@ -10,7 +10,6 @@ import Teachers from '../../pages/Teachers/Teachers'; */
 import themes from '../Themes/Themes';
 import Loading from '../Loading/Loading';
 import { ToastContainer } from 'react-toastify';
-import css from './App.module.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './toast.css';
 
@@ -29,19 +28,12 @@ function App() {
     <ThemeProvider theme={themes[currentThemeIndex]}>
       <CssBaseline />
       <Suspense fallback={<Loading />}>
-        {/*    <div className={css.toastContainer}> */}
         <ToastContainer
-          position="top-right"
-          autoClose={1000}
+          autoClose={3000}
           hideProgressBar={true}
-          closeOnClick
           closeButton={false}
-          pauseOnHover
-          draggable
           toastClassName="custom-toast"
-          limit={1}
         />
-        {/*         </div> */}
         <Routes>
           <Route
             path="/"

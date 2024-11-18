@@ -18,6 +18,30 @@
   font-size: 14px;
   background-color: #e2e2e2;
   color: rgba(39, 34, 34, 0.681);
+  animation: slideUp 4s ease-in-out forwards;
+  animation: slideDown 4s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
 }
 
 .custom-progress {
