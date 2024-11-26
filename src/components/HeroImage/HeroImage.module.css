@@ -1,6 +1,40 @@
 .container {
-  width: 568px;
+  /*   width: 568px; */
   height: 530px;
   background-size: cover;
   background-position: center;
+}
+@media screen and (min-width: 320px) {
+  .container {
+    min-width: 304px;
+    height: 230px;
+    border-radius: 30px;
+    margin-top: 16px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    min-width: 330px;
+    height: 230px;
+    border-radius: 30px;
+    margin-top: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 720px;
+    height: 530px;
+    border-radius: 30px;
+    margin-top: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 568px;
+    height: 530px;
+    margin-top: 0px;
+  }
 }

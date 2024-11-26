@@ -20,9 +20,12 @@
   flex-direction: column;
   background-color: #f8f8f8;
   padding-top: 32px;
+  position: relative; /* цього не було */
+  z-index: 1; /* цього не було */
 }
 .container {
   position: relative;
+  z-index: 1;
   display: flex;
   gap: 48px;
   min-width: 1184px;

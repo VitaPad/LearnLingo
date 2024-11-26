@@ -84,6 +84,6 @@ html {
 @media screen and (min-width: 1440px) {
   .container {
     width: 1440px;
-    padding: 32px 32px;
+    padding: 64px 64px;
   }
 }

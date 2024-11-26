@@ -4,12 +4,41 @@
   align-items: stretch;
   justify-content: space-between;
   background-color: transparent;
-  position: absolute;
+  /*   position: absolute; */
   padding-top: 20px;
-  top: 0;
+  /*   top: 0;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%); */
   width: 100%;
   padding-left: 128px;
   padding-right: 128px;
+  position: relative;
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .header {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    padding-left: 128px;
+    padding-right: 128px;
+  }
 }

@@ -15,21 +15,19 @@
 
 .registration {
   font-family: Roboto;
-  font-size: 16px;
+
   font-weight: 700;
   line-height: 20px;
   text-align: left;
   padding: 14px 39px 14px 39px;
   gap: 8px;
   border-radius: 12px;
-  opacity: 0px;
   background-color: rgba(18, 20, 23, 1);
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
+
 .userActions .themeButton {
-  min-height: 48px;
-  min-width: 48px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -61,5 +59,74 @@
 
 .login:hover,
 .login:focus {
-  transform: translateY(-2px); /* Легкий підйом */
+  transform: translateY(-2px);
+}
+@media screen and (max-width: 768px) {
+  .userActions .themeButton {
+    min-height: 32px;
+    min-width: 32px;
+  }
+  .userActions {
+    gap: 6px;
+  }
+  .login {
+    gap: 0;
+    font-size: 0;
+  }
+
+  .login svg {
+    width: 24px;
+    height: 24px;
+  }
+  .registration {
+    font-size: 12px;
+    padding: 8px 12px 8px 12px;
+  }
+}
+
+/* @media screen and (min-width: 375px) {
+  .userActions .themeButton {
+    min-height: 32px;
+    min-width: 32px;
+  }
+  .userActions {
+    gap: 8px;
+  }
+  .login {
+    gap: 0;
+    font-size: 0;
+  }
+  .login svg,
+  .registration svg {
+    width: 24px;
+    height: 24px;
+  }
+  .registration {
+    font-size: 12px;
+    padding: 8px 12px 8px 12px;
+  }
+} */
+
+@media screen and (min-width: 768px) {
+  .userActions {
+    gap: 16px;
+  }
+  .userActions .themeButton {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .userActions {
+    gap: 16px;
+  }
+  .userActions .themeButton {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  .registration {
+    font-size: 16px;
+    padding: 14px 39px 14px 39px;
+  }
 }

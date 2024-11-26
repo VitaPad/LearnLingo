@@ -10,6 +10,7 @@ const buildLinkClass = ({ isActive }) => {
 
 function Navigation({ theme }) {
   const [user, setUser] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -19,39 +20,68 @@ function Navigation({ theme }) {
     return () => unsubscribe();
   }, []);
 
-  return (
-    <nav className={css.nav}>
-      <NavLink
-        to="/"
-        className={buildLinkClass}
-        style={{
-          '--primary-main': theme.palette.primary.main,
-        }}
-      >
-        Home
-      </NavLink>
-      <NavLink
-        to="/teachers"
-        className={buildLinkClass}
-        style={{
-          '--primary-main': theme.palette.primary.main,
-        }}
-      >
-        Teachers
-      </NavLink>
+  const toggleMenu = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
 
-      {user && (
+  return (
+    <div className={css.navigationWrapper}>
+      <button className={css.burgerButton} onClick={toggleMenu}>
+        {/* Іконка бургер-меню */}
+        <svg
+          className={css.burgerIcon}
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 6H20M4 12H20M4 18H20"
+            stroke="black"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {/* Меню */}
+      <nav className={clsx(css.nav, isMenuOpen && css.navOpen)}>
         <NavLink
-          to="/favorites"
+          to="/"
           className={buildLinkClass}
           style={{
             '--primary-main': theme.palette.primary.main,
           }}
+          onClick={() => setIsMenuOpen(false)} // Закриваємо меню після кліку
         >
-          Favorites
+          Home
         </NavLink>
-      )}
-    </nav>
+        <NavLink
+          to="/teachers"
+          className={buildLinkClass}
+          style={{
+            '--primary-main': theme.palette.primary.main,
+          }}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          Teachers
+        </NavLink>
+        {user && (
+          <NavLink
+            to="/favorites"
+            className={buildLinkClass}
+            style={{
+              '--primary-main': theme.palette.primary.main,
+            }}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Favorites
+          </NavLink>
+        )}
+      </nav>
+    </div>
   );
 }
 export default Navigation;
