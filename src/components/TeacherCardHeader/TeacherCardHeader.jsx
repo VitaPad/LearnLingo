@@ -106,7 +106,7 @@ function TeacherCardHeader({
         </svg>
         Rating: {rating}
       </p>
-      <p className={css.itemPrice}>
+      <p className={`${css.itemPrice} ${css.item}`}>
         Price / 1 hour: <span className={css.price}>${pricePerHour}</span>
       </p>
 

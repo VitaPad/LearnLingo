@@ -25,6 +25,25 @@ function LogOut({ theme, onClick }) {
         padding: '0',
         backgroundColor: 'transparent',
         paddingRight: '20px',
+        borderRadius: '12px',
+        paddingTop: '16px',
+        paddingBottom: '16px',
+        '@media screen and (min-width: 768px) and (max-width: 1023px)': {
+          fontSize: '16px',
+          lineHeight: '24px',
+          paddingTop: '12px',
+          paddingBottom: '12px',
+          borderRadius: '10px',
+          paddingRight: '16px',
+        },
+        '@media (max-width: 768px)': {
+          fontSize: '14px',
+          lineHeight: '20px',
+          paddingTop: '10px',
+          paddingBottom: '10px',
+          borderRadius: '8px',
+          paddingRight: '12px',
+        },
       }}
     >
       <svg

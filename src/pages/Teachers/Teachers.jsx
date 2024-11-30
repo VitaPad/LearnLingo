@@ -20,18 +20,18 @@ function Teachers({ theme, toggleTheme }) {
   const handlePriceChange = price => setFilters(prev => ({ ...prev, price }));
 
   return (
-    <div className={css.container}>
-      <Header theme={theme} toggleTheme={toggleTheme} />
-      <div className={css.searchFormWrapper}>
-        <SearchForm
-          onLanguageChange={handleLanguageChange}
-          onLevelChange={handleLevelChange}
-          onPriceChange={handlePriceChange}
-        />
-      </div>
-      <div className={css.teachersListWrapper}>
-        <TeachersList theme={theme} filters={filters} />
-      </div>
+    <div className={css.teachers}>
+      <Header
+        theme={theme}
+        toggleTheme={toggleTheme}
+        headerClass={css.greyBackground}
+      />
+      <SearchForm
+        onLanguageChange={handleLanguageChange}
+        onLevelChange={handleLevelChange}
+        onPriceChange={handlePriceChange}
+      />
+      <TeachersList theme={theme} filters={filters} />
     </div>
   );
 }

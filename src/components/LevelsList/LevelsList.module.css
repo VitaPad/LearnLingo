@@ -1,9 +1,6 @@
-.levelList {
-  margin-top: 32px;
-}
 .levelItem {
   font-family: Roboto;
-  font-size: 14px;
+  /*   font-size: 14px; */
   font-weight: 500;
   line-height: 16px;
   text-align: left;
@@ -15,4 +12,51 @@
 
 .levelItem:last-child {
   margin-right: 0px;
+}
+@media screen and (min-width: 320px) {
+  .levelItem {
+    font-size: 12px;
+  }
+  .levelList {
+    margin-top: 4;
+    display: flex; /* 
+    align-items: center; */
+    /*   justify-content: center; */
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+@media screen and (min-width: 374px) {
+  .levelItem {
+    font-size: 12px;
+  }
+  .levelList {
+    margin-top: 4;
+    display: flex;
+    /*   align-items: center;
+    justify-content: center; */
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+@media screen and (min-width: 748px) {
+  .levelList {
+    margin-top: 0px;
+    display: flex;
+    /*   align-items: center;
+    justify-content: center; */
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .levelItem {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .levelList {
+    margin-top: 32px;
+  }
+  .levelItem {
+    font-size: 16px;
+  }
 }

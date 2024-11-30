@@ -9,7 +9,7 @@
 }
 .button {
   font-family: Roboto;
-  font-size: 18px;
+
   font-weight: 700;
   line-height: 28px;
   text-align: left;
@@ -25,3 +25,52 @@
 .button:focus {
   transform: translateY(-2px);
 }
+/* @media (max-width: 768px) {
+  .button {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 16px;
+    border-radius: 8px;
+  }
+
+  .svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+}
+@media screen and (min-width: 748px) and (max-width: 1023px) {
+  .button {
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+
+  .svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .button {
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+
+  .svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+} */

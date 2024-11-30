@@ -6,7 +6,7 @@ import css from './Header.module.css';
 import RegisterModal from '../RegiserModal/RegisterModal';
 import LogInModal from '../LogInModal/LogInModal';
 
-function Header({ theme, toggleTheme }) {
+function Header({ theme, toggleTheme, headerClass }) {
   const [open, setOpen] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
 
@@ -17,7 +17,7 @@ function Header({ theme, toggleTheme }) {
   const handleCloseRegister = () => setOpenRegister(false);
 
   return (
-    <header className={css.header}>
+    <header className={`${css.header} ${headerClass}`}>
       <Logo />
       <Navigation theme={theme} />
       <UserActions

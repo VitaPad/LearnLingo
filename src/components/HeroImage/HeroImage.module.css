@@ -22,7 +22,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 748px) and (max-width: 1023px) {
   .container {
     min-width: 720px;
     height: 530px;
@@ -31,9 +31,9 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1024px) {
   .container {
-    width: 568px;
+    min-width: 568px;
     height: 530px;
     margin-top: 0px;
   }
